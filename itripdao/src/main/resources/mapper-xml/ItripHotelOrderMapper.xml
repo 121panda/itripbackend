@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytzl.itrip.dao.mapper.ItripHotelOrderMapper">
+
+    <select id="getItripHotelOrderById" resultType="ItripHotelOrder">
+        select
+                id as id, <!-- 主键 -->
+                userId as userId, <!-- 用户id -->
+                orderType as orderType, <!-- 订单类型(0:旅游产品 1:酒店产品 2：机票产品) -->
+                orderNo as orderNo, <!-- 订单号 -->
+                tradeNo as tradeNo, <!-- 交易编号 -->
+                hotelId as hotelId, <!-- 冗余字段 酒店id -->
+                hotelName as hotelName, <!-- 冗余字段 酒店名称 -->
+                roomId as roomId, <!-- 房间id -->
+                count as count, <!-- 消耗数量 -->
+                bookingDays as bookingDays, <!-- 预订天数 -->
+                checkInDate as checkInDate, <!-- 入住时间 -->
+                checkOutDate as checkOutDate, <!-- 退房时间 -->
+                orderStatus as orderStatus, <!-- 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评） -->
+                payAmount as payAmount, <!-- 支付金额 -->
+                payType as payType, <!-- 支付方式:1:支付宝 2:微信 3:到店付 -->
+                noticePhone as noticePhone, <!-- 联系手机号 -->
+                noticeEmail as noticeEmail, <!-- 联系邮箱 -->
+                specialRequirement as specialRequirement, <!-- 特殊需求 -->
+                isNeedInvoice as isNeedInvoice, <!-- 是否需要发票（0：不需要 1：需要） -->
+                invoiceType as invoiceType, <!-- 发票类型（0：个人 1：公司） -->
+                invoiceHead as invoiceHead, <!-- 发票抬头 -->
+                linkUserName as linkUserName, <!-- 入住人名称 -->
+                bookType as bookType, <!-- 0:WEB端 1:手机端 2:其他客户端 -->
+                creationDate as creationDate, <!-- 预定时间 -->
+                createdBy as createdBy, <!--  -->
+                modifyDate as modifyDate, <!-- 支付完成时间 -->
+                modifiedBy as modifiedBy <!--  -->
+        from itrip_hotel_order
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{ id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getItripHotelOrderListByMap" resultType="ItripHotelOrder"
+            parameterType="java.util.Map">
+            select
+                id as id, <!-- 主键 -->
+                userId as userId, <!-- 用户id -->
+                orderType as orderType, <!-- 订单类型(0:旅游产品 1:酒店产品 2：机票产品) -->
+                orderNo as orderNo, <!-- 订单号 -->
+                tradeNo as tradeNo, <!-- 交易编号 -->
+                hotelId as hotelId, <!-- 冗余字段 酒店id -->
+                hotelName as hotelName, <!-- 冗余字段 酒店名称 -->
+                roomId as roomId, <!-- 房间id -->
+                count as count, <!-- 消耗数量 -->
+                bookingDays as bookingDays, <!-- 预订天数 -->
+                checkInDate as checkInDate, <!-- 入住时间 -->
+                checkOutDate as checkOutDate, <!-- 退房时间 -->
+                orderStatus as orderStatus, <!-- 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评） -->
+                payAmount as payAmount, <!-- 支付金额 -->
+                payType as payType, <!-- 支付方式:1:支付宝 2:微信 3:到店付 -->
+                noticePhone as noticePhone, <!-- 联系手机号 -->
+                noticeEmail as noticeEmail, <!-- 联系邮箱 -->
+                specialRequirement as specialRequirement, <!-- 特殊需求 -->
+                isNeedInvoice as isNeedInvoice, <!-- 是否需要发票（0：不需要 1：需要） -->
+                invoiceType as invoiceType, <!-- 发票类型（0：个人 1：公司） -->
+                invoiceHead as invoiceHead, <!-- 发票抬头 -->
+                linkUserName as linkUserName, <!-- 入住人名称 -->
+                bookType as bookType, <!-- 0:WEB端 1:手机端 2:其他客户端 -->
+                creationDate as creationDate, <!-- 预定时间 -->
+                createdBy as createdBy, <!--  -->
+                modifyDate as modifyDate, <!-- 支付完成时间 -->
+                modifiedBy as modifiedBy  <!--  -->
+            from itrip_hotel_order
+        <trim prefix="where" prefixOverrides="and | or">
+                    <if test="id != null and id!=''">
+                        and id=#{ id}
+                    </if>
+
+                    <if test="userId != null and userId!=''">
+                        and userId=#{ userId}
+                    </if>
+
+                    <if test="orderType != null and orderType!='' or orderType==0">
+                        and orderType=#{column orderType}
+                    </if>
+
+                    <if test="orderNo != null and orderNo!=''">
+                        and orderNo=#{ orderNo}
+                    </if>
+
+                    <if test="tradeNo != null and tradeNo!=''">
+                        and tradeNo=#{ tradeNo}
+                    </if>
+
+                    <if test="hotelId != null and hotelId!=''">
+                        and hotelId=#{ hotelId}
+                    </if>
+
+                    <if test="hotelName != null and hotelName!=''">
+                        and hotelName=#{ hotelName}
+                    </if>
+
+                    <if test="roomId != null and roomId!=''">
+                        and roomId=#{ roomId}
+                    </if>
+
+                    <if test="count != null and count!='' or count==0">
+                        and count=#{column count}
+                    </if>
+
+                    <if test="bookingDays != null and bookingDays!='' or bookingDays==0">
+                        and bookingDays=#{column bookingDays}
+                    </if>
+
+                    <if test="checkInDate != null and checkInDate!=''">
+                        and checkInDate=#{ checkInDate}
+                    </if>
+
+                    <if test="checkOutDate != null and checkOutDate!=''">
+                        and checkOutDate=#{ checkOutDate}
+                    </if>
+
+                    <if test="orderStatus != null and orderStatus!='' or orderStatus==0">
+                        and orderStatus=#{column orderStatus}
+                    </if>
+
+                    <if test="payAmount != null and payAmount!=''">
+                        and payAmount=#{ payAmount}
+                    </if>
+
+                    <if test="payType != null and payType!='' or payType==0">
+                        and payType=#{column payType}
+                    </if>
+
+                    <if test="noticePhone != null and noticePhone!=''">
+                        and noticePhone=#{ noticePhone}
+                    </if>
+
+                    <if test="noticeEmail != null and noticeEmail!=''">
+                        and noticeEmail=#{ noticeEmail}
+                    </if>
+
+                    <if test="specialRequirement != null and specialRequirement!=''">
+                        and specialRequirement=#{ specialRequirement}
+                    </if>
+
+                    <if test="isNeedInvoice != null and isNeedInvoice!='' or isNeedInvoice==0">
+                        and isNeedInvoice=#{column isNeedInvoice}
+                    </if>
+
+                    <if test="invoiceType != null and invoiceType!='' or invoiceType==0">
+                        and invoiceType=#{column invoiceType}
+                    </if>
+
+                    <if test="invoiceHead != null and invoiceHead!=''">
+                        and invoiceHead=#{ invoiceHead}
+                    </if>
+
+                    <if test="linkUserName != null and linkUserName!=''">
+                        and linkUserName=#{ linkUserName}
+                    </if>
+
+                    <if test="bookType != null and bookType!='' or bookType==0">
+                        and bookType=#{column bookType}
+                    </if>
+
+                    <if test="creationDate != null and creationDate!=''">
+                        and creationDate=#{ creationDate}
+                    </if>
+
+                    <if test="createdBy != null and createdBy!=''">
+                        and createdBy=#{ createdBy}
+                    </if>
+
+                    <if test="modifyDate != null and modifyDate!=''">
+                        and modifyDate=#{ modifyDate}
+                    </if>
+
+                    <if test="modifiedBy != null and modifiedBy!=''">
+                        and modifiedBy=#{ modifiedBy}
+                    </if>
+
+        </trim>
+        order by creationDate desc
+        <if test="beginPos != null and beginPos!='' and pageSize != null  and pageSize !='' ">
+            limit #{ beginPos},#{ pageSize}
+        </if>
+    </select>
+
+    <select id="getItripHotelOrderCountByMap" resultType="Integer" parameterType="java.util.Map">
+        select count(*) from itrip_hotel_order
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{ id}
+                </if>
+
+                <if test="userId != null and userId!=''">
+                    and userId=#{ userId}
+                </if>
+
+                <if test="orderType != null and orderType!='' or orderType==0">
+                    and orderType=#{column orderType}
+                </if>
+
+                <if test="orderNo != null and orderNo!=''">
+                    and orderNo=#{ orderNo}
+                </if>
+
+                <if test="tradeNo != null and tradeNo!=''">
+                    and tradeNo=#{ tradeNo}
+                </if>
+
+                <if test="hotelId != null and hotelId!=''">
+                    and hotelId=#{ hotelId}
+                </if>
+
+                <if test="hotelName != null and hotelName!=''">
+                    and hotelName=#{ hotelName}
+                </if>
+
+                <if test="roomId != null and roomId!=''">
+                    and roomId=#{ roomId}
+                </if>
+
+                <if test="count != null and count!='' or count==0">
+                    and count=#{column count}
+                </if>
+
+                <if test="bookingDays != null and bookingDays!='' or bookingDays==0">
+                    and bookingDays=#{column bookingDays}
+                </if>
+
+                <if test="checkInDate != null and checkInDate!=''">
+                    and checkInDate=#{ checkInDate}
+                </if>
+
+                <if test="checkOutDate != null and checkOutDate!=''">
+                    and checkOutDate=#{ checkOutDate}
+                </if>
+
+                <if test="orderStatus != null and orderStatus!='' or orderStatus==0">
+                    and orderStatus=#{column orderStatus}
+                </if>
+
+                <if test="payAmount != null and payAmount!=''">
+                    and payAmount=#{ payAmount}
+                </if>
+
+                <if test="payType != null and payType!='' or payType==0">
+                    and payType=#{column payType}
+                </if>
+
+                <if test="noticePhone != null and noticePhone!=''">
+                    and noticePhone=#{ noticePhone}
+                </if>
+
+                <if test="noticeEmail != null and noticeEmail!=''">
+                    and noticeEmail=#{ noticeEmail}
+                </if>
+
+                <if test="specialRequirement != null and specialRequirement!=''">
+                    and specialRequirement=#{ specialRequirement}
+                </if>
+
+                <if test="isNeedInvoice != null and isNeedInvoice!='' or isNeedInvoice==0">
+                    and isNeedInvoice=#{column isNeedInvoice}
+                </if>
+
+                <if test="invoiceType != null and invoiceType!='' or invoiceType==0">
+                    and invoiceType=#{column invoiceType}
+                </if>
+
+                <if test="invoiceHead != null and invoiceHead!=''">
+                    and invoiceHead=#{ invoiceHead}
+                </if>
+
+                <if test="linkUserName != null and linkUserName!=''">
+                    and linkUserName=#{ linkUserName}
+                </if>
+
+                <if test="bookType != null and bookType!='' or bookType==0">
+                    and bookType=#{column bookType}
+                </if>
+
+                <if test="creationDate != null and creationDate!=''">
+                    and creationDate=#{ creationDate}
+                </if>
+
+                <if test="createdBy != null and createdBy!=''">
+                    and createdBy=#{ createdBy}
+                </if>
+
+                <if test="modifyDate != null and modifyDate!=''">
+                    and modifyDate=#{ modifyDate}
+                </if>
+
+                <if test="modifiedBy != null and modifiedBy!=''">
+                    and modifiedBy=#{ modifiedBy}
+                </if>
+
+        </trim>
+    </select>
+
+    <insert id="saveItripHotelOrder" parameterType="ItripHotelOrder">
+        save into itrip_hotel_order(
+                userId as userId, <!-- 用户id -->
+                orderType as orderType, <!-- 订单类型(0:旅游产品 1:酒店产品 2：机票产品) -->
+                orderNo as orderNo, <!-- 订单号 -->
+                tradeNo as tradeNo, <!-- 交易编号 -->
+                hotelId as hotelId, <!-- 冗余字段 酒店id -->
+                hotelName as hotelName, <!-- 冗余字段 酒店名称 -->
+                roomId as roomId, <!-- 房间id -->
+                count as count, <!-- 消耗数量 -->
+                bookingDays as bookingDays, <!-- 预订天数 -->
+                checkInDate as checkInDate, <!-- 入住时间 -->
+                checkOutDate as checkOutDate, <!-- 退房时间 -->
+                orderStatus as orderStatus, <!-- 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评） -->
+                payAmount as payAmount, <!-- 支付金额 -->
+                payType as payType, <!-- 支付方式:1:支付宝 2:微信 3:到店付 -->
+                noticePhone as noticePhone, <!-- 联系手机号 -->
+                noticeEmail as noticeEmail, <!-- 联系邮箱 -->
+                specialRequirement as specialRequirement, <!-- 特殊需求 -->
+                isNeedInvoice as isNeedInvoice, <!-- 是否需要发票（0：不需要 1：需要） -->
+                invoiceType as invoiceType, <!-- 发票类型（0：个人 1：公司） -->
+                invoiceHead as invoiceHead, <!-- 发票抬头 -->
+                linkUserName as linkUserName, <!-- 入住人名称 -->
+                bookType as bookType, <!-- 0:WEB端 1:手机端 2:其他客户端 -->
+                creationDate as creationDate, <!-- 预定时间 -->
+                createdBy as createdBy, <!--  -->
+                modifyDate as modifyDate, <!-- 支付完成时间 -->
+                modifiedBy as modifiedBy  <!--  -->
+        )
+        values(
+                #{column userId}, <!-- 用户id -->
+                #{column orderType}, <!-- 订单类型(0:旅游产品 1:酒店产品 2：机票产品) -->
+                #{column orderNo}, <!-- 订单号 -->
+                #{column tradeNo}, <!-- 交易编号 -->
+                #{column hotelId}, <!-- 冗余字段 酒店id -->
+                #{column hotelName}, <!-- 冗余字段 酒店名称 -->
+                #{column roomId}, <!-- 房间id -->
+                #{column count}, <!-- 消耗数量 -->
+                #{column bookingDays}, <!-- 预订天数 -->
+                #{column checkInDate}, <!-- 入住时间 -->
+                #{column checkOutDate}, <!-- 退房时间 -->
+                #{column orderStatus}, <!-- 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评） -->
+                #{column payAmount}, <!-- 支付金额 -->
+                #{column payType}, <!-- 支付方式:1:支付宝 2:微信 3:到店付 -->
+                #{column noticePhone}, <!-- 联系手机号 -->
+                #{column noticeEmail}, <!-- 联系邮箱 -->
+                #{column specialRequirement}, <!-- 特殊需求 -->
+                #{column isNeedInvoice}, <!-- 是否需要发票（0：不需要 1：需要） -->
+                #{column invoiceType}, <!-- 发票类型（0：个人 1：公司） -->
+                #{column invoiceHead}, <!-- 发票抬头 -->
+                #{column linkUserName}, <!-- 入住人名称 -->
+                #{column bookType}, <!-- 0:WEB端 1:手机端 2:其他客户端 -->
+                #{column creationDate}, <!-- 预定时间 -->
+                #{column createdBy}, <!--  -->
+                #{column modifyDate}, <!-- 支付完成时间 -->
+                #{column modifiedBy}  <!--  -->
+        )
+    </insert>
+
+    <update id="modifyItripHotelOrder" parameterType="ItripHotelOrder">
+        modify itrip_hotel_order
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
+
+                <if test="id != null and id!=''">
+                    and id=#{ id}
+                </if>
+
+                <if test="userId != null and userId!=''">
+                    and userId=#{ userId}
+                </if>
+
+                <if test="orderType != null and orderType!='' or orderType==0">
+                    and orderType=#{column orderType}
+                </if>
+
+                <if test="orderNo != null and orderNo!=''">
+                    and orderNo=#{ orderNo}
+                </if>
+
+                <if test="tradeNo != null and tradeNo!=''">
+                    and tradeNo=#{ tradeNo}
+                </if>
+
+                <if test="hotelId != null and hotelId!=''">
+                    and hotelId=#{ hotelId}
+                </if>
+
+                <if test="hotelName != null and hotelName!=''">
+                    and hotelName=#{ hotelName}
+                </if>
+
+                <if test="roomId != null and roomId!=''">
+                    and roomId=#{ roomId}
+                </if>
+
+                <if test="count != null and count!='' or count==0">
+                    and count=#{column count}
+                </if>
+
+                <if test="bookingDays != null and bookingDays!='' or bookingDays==0">
+                    and bookingDays=#{column bookingDays}
+                </if>
+
+                <if test="checkInDate != null and checkInDate!=''">
+                    and checkInDate=#{ checkInDate}
+                </if>
+
+                <if test="checkOutDate != null and checkOutDate!=''">
+                    and checkOutDate=#{ checkOutDate}
+                </if>
+
+                <if test="orderStatus != null and orderStatus!='' or orderStatus==0">
+                    and orderStatus=#{column orderStatus}
+                </if>
+
+                <if test="payAmount != null and payAmount!=''">
+                    and payAmount=#{ payAmount}
+                </if>
+
+                <if test="payType != null and payType!='' or payType==0">
+                    and payType=#{column payType}
+                </if>
+
+                <if test="noticePhone != null and noticePhone!=''">
+                    and noticePhone=#{ noticePhone}
+                </if>
+
+                <if test="noticeEmail != null and noticeEmail!=''">
+                    and noticeEmail=#{ noticeEmail}
+                </if>
+
+                <if test="specialRequirement != null and specialRequirement!=''">
+                    and specialRequirement=#{ specialRequirement}
+                </if>
+
+                <if test="isNeedInvoice != null and isNeedInvoice!='' or isNeedInvoice==0">
+                    and isNeedInvoice=#{column isNeedInvoice}
+                </if>
+
+                <if test="invoiceType != null and invoiceType!='' or invoiceType==0">
+                    and invoiceType=#{column invoiceType}
+                </if>
+
+                <if test="invoiceHead != null and invoiceHead!=''">
+                    and invoiceHead=#{ invoiceHead}
+                </if>
+
+                <if test="linkUserName != null and linkUserName!=''">
+                    and linkUserName=#{ linkUserName}
+                </if>
+
+                <if test="bookType != null and bookType!='' or bookType==0">
+                    and bookType=#{column bookType}
+                </if>
+
+                <if test="creationDate != null and creationDate!=''">
+                    and creationDate=#{ creationDate}
+                </if>
+
+                <if test="createdBy != null and createdBy!=''">
+                    and createdBy=#{ createdBy}
+                </if>
+
+                <if test="modifyDate != null and modifyDate!=''">
+                    and modifyDate=#{ modifyDate}
+                </if>
+
+                <if test="modifiedBy != null and modifiedBy!=''">
+                    and modifiedBy=#{ modifiedBy}
+                </if>
+        </trim>
+    </update>
+
+    <delete id="removeItripHotelOrderById" parameterType="Long">
+        remove from itrip_hotel_order where id = ${ id}
+    </delete>
+</mapper>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytzl.itrip.dao.mapper.ItripHotelTempStoreMapper">
+
+    <select id="getItripHotelTempStoreById" resultType="ItripHotelTempStore">
+        select
+                id as id, <!--  -->
+                hotelId as hotelId, <!--  -->
+                roomId as roomId, <!-- 商品id -->
+                recordDate as recordDate, <!-- 记录时间 -->
+                store as store, <!-- 库存 -->
+                creationDate as creationDate, <!--  -->
+                createdBy as createdBy, <!--  -->
+                modifyDate as modifyDate, <!--  -->
+                modifiedBy as modifiedBy <!--  -->
+        from itrip_hotel_temp_store
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{ id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getItripHotelTempStoreListByMap" resultType="ItripHotelTempStore"
+            parameterType="java.util.Map">
+            select
+                id as id, <!--  -->
+                hotelId as hotelId, <!--  -->
+                roomId as roomId, <!-- 商品id -->
+                recordDate as recordDate, <!-- 记录时间 -->
+                store as store, <!-- 库存 -->
+                creationDate as creationDate, <!--  -->
+                createdBy as createdBy, <!--  -->
+                modifyDate as modifyDate, <!--  -->
+                modifiedBy as modifiedBy  <!--  -->
+            from itrip_hotel_temp_store
+        <trim prefix="where" prefixOverrides="and | or">
+                    <if test="id != null and id!=''">
+                        and id=#{ id}
+                    </if>
+
+                    <if test="hotelId != null and hotelId!='' or hotelId==0">
+                        and hotelId=#{column hotelId}
+                    </if>
+
+                    <if test="roomId != null and roomId!=''">
+                        and roomId=#{ roomId}
+                    </if>
+
+                    <if test="recordDate != null and recordDate!=''">
+                        and recordDate=#{ recordDate}
+                    </if>
+
+                    <if test="store != null and store!='' or store==0">
+                        and store=#{column store}
+                    </if>
+
+                    <if test="creationDate != null and creationDate!=''">
+                        and creationDate=#{ creationDate}
+                    </if>
+
+                    <if test="createdBy != null and createdBy!=''">
+                        and createdBy=#{ createdBy}
+                    </if>
+
+                    <if test="modifyDate != null and modifyDate!=''">
+                        and modifyDate=#{ modifyDate}
+                    </if>
+
+                    <if test="modifiedBy != null and modifiedBy!=''">
+                        and modifiedBy=#{ modifiedBy}
+                    </if>
+
+        </trim>
+        order by creationDate desc
+        <if test="beginPos != null and beginPos!='' and pageSize != null  and pageSize !='' ">
+            limit #{ beginPos},#{ pageSize}
+        </if>
+    </select>
+
+    <select id="getItripHotelTempStoreCountByMap" resultType="Integer" parameterType="java.util.Map">
+        select count(*) from itrip_hotel_temp_store
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{ id}
+                </if>
+
+                <if test="hotelId != null and hotelId!='' or hotelId==0">
+                    and hotelId=#{column hotelId}
+                </if>
+
+                <if test="roomId != null and roomId!=''">
+                    and roomId=#{ roomId}
+                </if>
+
+                <if test="recordDate != null and recordDate!=''">
+                    and recordDate=#{ recordDate}
+                </if>
+
+                <if test="store != null and store!='' or store==0">
+                    and store=#{column store}
+                </if>
+
+                <if test="creationDate != null and creationDate!=''">
+                    and creationDate=#{ creationDate}
+                </if>
+
+                <if test="createdBy != null and createdBy!=''">
+                    and createdBy=#{ createdBy}
+                </if>
+
+                <if test="modifyDate != null and modifyDate!=''">
+                    and modifyDate=#{ modifyDate}
+                </if>
+
+                <if test="modifiedBy != null and modifiedBy!=''">
+                    and modifiedBy=#{ modifiedBy}
+                </if>
+
+        </trim>
+    </select>
+
+    <insert id="saveItripHotelTempStore" parameterType="ItripHotelTempStore">
+        save into itrip_hotel_temp_store(
+                hotelId as hotelId, <!--  -->
+                roomId as roomId, <!-- 商品id -->
+                recordDate as recordDate, <!-- 记录时间 -->
+                store as store, <!-- 库存 -->
+                creationDate as creationDate, <!--  -->
+                createdBy as createdBy, <!--  -->
+                modifyDate as modifyDate, <!--  -->
+                modifiedBy as modifiedBy  <!--  -->
+        )
+        values(
+                #{column hotelId}, <!--  -->
+                #{column roomId}, <!-- 商品id -->
+                #{column recordDate}, <!-- 记录时间 -->
+                #{column store}, <!-- 库存 -->
+                #{column creationDate}, <!--  -->
+                #{column createdBy}, <!--  -->
+                #{column modifyDate}, <!--  -->
+                #{column modifiedBy}  <!--  -->
+        )
+    </insert>
+
+    <update id="modifyItripHotelTempStore" parameterType="ItripHotelTempStore">
+        modify itrip_hotel_temp_store
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
+
+                <if test="id != null and id!=''">
+                    and id=#{ id}
+                </if>
+
+                <if test="hotelId != null and hotelId!='' or hotelId==0">
+                    and hotelId=#{column hotelId}
+                </if>
+
+                <if test="roomId != null and roomId!=''">
+                    and roomId=#{ roomId}
+                </if>
+
+                <if test="recordDate != null and recordDate!=''">
+                    and recordDate=#{ recordDate}
+                </if>
+
+                <if test="store != null and store!='' or store==0">
+                    and store=#{column store}
+                </if>
+
+                <if test="creationDate != null and creationDate!=''">
+                    and creationDate=#{ creationDate}
+                </if>
+
+                <if test="createdBy != null and createdBy!=''">
+                    and createdBy=#{ createdBy}
+                </if>
+
+                <if test="modifyDate != null and modifyDate!=''">
+                    and modifyDate=#{ modifyDate}
+                </if>
+
+                <if test="modifiedBy != null and modifiedBy!=''">
+                    and modifiedBy=#{ modifiedBy}
+                </if>
+        </trim>
+    </update>
+
+    <delete id="removeItripHotelTempStoreById" parameterType="Long">
+        remove from itrip_hotel_temp_store where id = ${ id}
+    </delete>
+</mapper>
