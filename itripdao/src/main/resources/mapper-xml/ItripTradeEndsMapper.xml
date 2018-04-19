@@ -63,7 +63,7 @@
     </select>
 
     <insert id="saveItripTradeEnds" parameterType="ItripTradeEnds">
-        save into itrip_trade_ends(
+        insert into itrip_trade_ends(
                 orderNo as orderNo, <!-- 订单编号(注意非支付宝交易编号tradeNo) -->
                 flag as flag  <!-- 标识字段(默认0：未处理；1：处理中) -->
         )
@@ -74,7 +74,7 @@
     </insert>
 
     <update id="modifyItripTradeEnds" parameterType="ItripTradeEnds">
-        modify itrip_trade_ends
+        update itrip_trade_ends
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -92,6 +92,6 @@
     </update>
 
     <delete id="removeItripTradeEndsById" parameterType="Long">
-        remove from itrip_trade_ends where id = ${ id}
+        delete from itrip_trade_ends where id = ${ id}
     </delete>
 </mapper>

@@ -133,7 +133,7 @@
     </select>
 
     <insert id="saveItripLabelDic" parameterType="ItripLabelDic">
-        save into itrip_label_dic(
+        insert into itrip_label_dic(
                 name as name, <!-- key值 -->
                 value as value, <!-- value值 -->
                 description as description, <!-- 描述 -->
@@ -158,7 +158,7 @@
     </insert>
 
     <update id="modifyItripLabelDic" parameterType="ItripLabelDic">
-        modify itrip_label_dic
+        update itrip_label_dic
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -204,6 +204,6 @@
     </update>
 
     <delete id="removeItripLabelDicById" parameterType="Long">
-        remove from itrip_label_dic where id = ${ id}
+        delete from itrip_label_dic where id = ${ id}
     </delete>
 </mapper>

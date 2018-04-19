@@ -103,7 +103,7 @@
     </select>
 
     <insert id="saveItripHotelFeature" parameterType="ItripHotelFeature">
-        save into itrip_hotel_feature(
+        insert into itrip_hotel_feature(
                 hotelId as hotelId, <!--  -->
                 featureId as featureId, <!--  -->
                 creationDate as creationDate, <!--  -->
@@ -122,7 +122,7 @@
     </insert>
 
     <update id="modifyItripHotelFeature" parameterType="ItripHotelFeature">
-        modify itrip_hotel_feature
+        update itrip_hotel_feature
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -156,6 +156,6 @@
     </update>
 
     <delete id="removeItripHotelFeatureById" parameterType="Long">
-        remove from itrip_hotel_feature where id = ${ id}
+        delete from itrip_hotel_feature where id = ${ id}
     </delete>
 </mapper>

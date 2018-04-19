@@ -103,7 +103,7 @@
     </select>
 
     <insert id="saveItripHotelTradingArea" parameterType="ItripHotelTradingArea">
-        save into itrip_hotel_trading_area(
+        insert into itrip_hotel_trading_area(
                 hotelId as hotelId, <!-- 酒店id -->
                 areaId as areaId, <!-- 商圈id -->
                 creationDate as creationDate, <!--  -->
@@ -122,7 +122,7 @@
     </insert>
 
     <update id="modifyItripHotelTradingArea" parameterType="ItripHotelTradingArea">
-        modify itrip_hotel_trading_area
+        update itrip_hotel_trading_area
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -156,6 +156,6 @@
     </update>
 
     <delete id="removeItripHotelTradingAreaById" parameterType="Long">
-        remove from itrip_hotel_trading_area where id = ${ id}
+        delete from itrip_hotel_trading_area where id = ${ id}
     </delete>
 </mapper>

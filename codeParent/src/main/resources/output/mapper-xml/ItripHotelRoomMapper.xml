@@ -183,7 +183,7 @@
     </select>
 
     <insert id="saveItripHotelRoom" parameterType="ItripHotelRoom">
-        save into itrip_hotel_room(
+        insert into itrip_hotel_room(
                 hotelId as hotelId, <!-- 酒店ID -->
                 roomTitle as roomTitle, <!-- 房间名称 -->
                 roomPrice as roomPrice, <!-- 房间价格 -->
@@ -218,7 +218,7 @@
     </insert>
 
     <update id="modifyItripHotelRoom" parameterType="ItripHotelRoom">
-        modify itrip_hotel_room
+        update itrip_hotel_room
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -284,6 +284,6 @@
     </update>
 
     <delete id="removeItripHotelRoomById" parameterType="Long">
-        remove from itrip_hotel_room where id = ${ id}
+        delete from itrip_hotel_room where id = ${ id}
     </delete>
 </mapper>

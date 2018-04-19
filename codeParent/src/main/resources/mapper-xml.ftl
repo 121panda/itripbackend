@@ -71,7 +71,7 @@
     </select>
 
     <insert id="save${table.className}" parameterType="${table.className}">
-        save into ${table.tableName}(
+        insert into ${table.tableName}(
             <#list table.columnList as column>
             <#if column.columnName !="id">
                 <#if column_has_next>
@@ -96,7 +96,7 @@
     </insert>
 
     <update id="modify${table.className}" parameterType="${table.className}">
-        modify ${table.tableName}
+        update ${table.tableName}
         <trim prefix="set" suffixOverrides="," suffix="where id=${r"#{"}id}}">
         <#list table.columnList as column>
 
@@ -114,6 +114,6 @@
     </update>
 
     <delete id="remove${table.className}ById" parameterType="Long">
-        remove from ${table.tableName} where id = ${r"${"} id}
+        delete from ${table.tableName} where id = ${r"${"} id}
     </delete>
 </mapper>

@@ -113,7 +113,7 @@
     </select>
 
     <insert id="saveItripOrderLinkUser" parameterType="ItripOrderLinkUser">
-        save into itrip_order_link_user(
+        insert into itrip_order_link_user(
                 orderId as orderId, <!-- 订单id -->
                 linkUserId as linkUserId, <!-- 联系人id -->
                 linkUserName as linkUserName, <!-- 入住人姓名逗号分隔 -->
@@ -134,7 +134,7 @@
     </insert>
 
     <update id="modifyItripOrderLinkUser" parameterType="ItripOrderLinkUser">
-        modify itrip_order_link_user
+        update itrip_order_link_user
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -172,6 +172,6 @@
     </update>
 
     <delete id="removeItripOrderLinkUserById" parameterType="Long">
-        remove from itrip_order_link_user where id = ${ id}
+        delete from itrip_order_link_user where id = ${ id}
     </delete>
 </mapper>

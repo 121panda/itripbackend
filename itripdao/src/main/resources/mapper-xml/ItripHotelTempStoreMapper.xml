@@ -123,7 +123,7 @@
     </select>
 
     <insert id="saveItripHotelTempStore" parameterType="ItripHotelTempStore">
-        save into itrip_hotel_temp_store(
+        insert into itrip_hotel_temp_store(
                 hotelId as hotelId, <!--  -->
                 roomId as roomId, <!-- 商品id -->
                 recordDate as recordDate, <!-- 记录时间 -->
@@ -146,7 +146,7 @@
     </insert>
 
     <update id="modifyItripHotelTempStore" parameterType="ItripHotelTempStore">
-        modify itrip_hotel_temp_store
+        update itrip_hotel_temp_store
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -188,6 +188,6 @@
     </update>
 
     <delete id="removeItripHotelTempStoreById" parameterType="Long">
-        remove from itrip_hotel_temp_store where id = ${ id}
+        delete from itrip_hotel_temp_store where id = ${ id}
     </delete>
 </mapper>

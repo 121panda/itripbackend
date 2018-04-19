@@ -133,7 +133,7 @@
     </select>
 
     <insert id="saveItripUserLinkUser" parameterType="ItripUserLinkUser">
-        save into itrip_user_link_user(
+        insert into itrip_user_link_user(
                 linkUserName as linkUserName, <!-- 常用联系人姓名 -->
                 linkIdCard as linkIdCard, <!-- 证件号码 -->
                 linkPhone as linkPhone, <!-- 常用联系人电话 -->
@@ -158,7 +158,7 @@
     </insert>
 
     <update id="modifyItripUserLinkUser" parameterType="ItripUserLinkUser">
-        modify itrip_user_link_user
+        update itrip_user_link_user
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -204,6 +204,6 @@
     </update>
 
     <delete id="removeItripUserLinkUserById" parameterType="Long">
-        remove from itrip_user_link_user where id = ${ id}
+        delete from itrip_user_link_user where id = ${ id}
     </delete>
 </mapper>

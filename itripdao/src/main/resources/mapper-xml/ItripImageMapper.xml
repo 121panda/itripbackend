@@ -123,7 +123,7 @@
     </select>
 
     <insert id="saveItripImage" parameterType="ItripImage">
-        save into itrip_image(
+        insert into itrip_image(
                 type as type, <!-- 图片类型(0:酒店图片1:房间图片2:评论图片) -->
                 targetId as targetId, <!-- 关联id -->
                 position as position, <!-- 图片s上传顺序位置 -->
@@ -146,7 +146,7 @@
     </insert>
 
     <update id="modifyItripImage" parameterType="ItripImage">
-        modify itrip_image
+        update itrip_image
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -188,6 +188,6 @@
     </update>
 
     <delete id="removeItripImageById" parameterType="Long">
-        remove from itrip_image where id = ${ id}
+        delete from itrip_image where id = ${ id}
     </delete>
 </mapper>

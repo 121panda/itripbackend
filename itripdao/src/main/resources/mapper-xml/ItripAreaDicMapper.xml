@@ -173,7 +173,7 @@
     </select>
 
     <insert id="saveItripAreaDic" parameterType="ItripAreaDic">
-        save into itrip_area_dic(
+        insert into itrip_area_dic(
                 name as name, <!-- 区域名称 -->
                 areaNo as areaNo, <!-- 区域编号 -->
                 parent as parent, <!-- 父级区域 -->
@@ -206,7 +206,7 @@
     </insert>
 
     <update id="modifyItripAreaDic" parameterType="ItripAreaDic">
-        modify itrip_area_dic
+        update itrip_area_dic
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -268,6 +268,6 @@
     </update>
 
     <delete id="removeItripAreaDicById" parameterType="Long">
-        remove from itrip_area_dic where id = ${ id}
+        delete from itrip_area_dic where id = ${ id}
     </delete>
 </mapper>

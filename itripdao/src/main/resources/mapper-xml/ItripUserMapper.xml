@@ -183,7 +183,7 @@
     </select>
 
     <insert id="saveItripUser" parameterType="ItripUser">
-        save into itrip_user(
+        insert into itrip_user(
                 userCode as userCode, <!-- 若是第三方登录，系统将自动生成唯一账号；自注册用户则为邮箱或者手机号 -->
                 userPassword as userPassword, <!-- 若是第三方登录，系统将自动生成唯一密码；自注册用户则为自定义密码 -->
                 userType as userType, <!-- 用户类型（标识：0 自注册用户 1 微信登录 2 QQ登录 3 微博登录） -->
@@ -218,7 +218,7 @@
     </insert>
 
     <update id="modifyItripUser" parameterType="ItripUser">
-        modify itrip_user
+        update itrip_user
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -284,6 +284,6 @@
     </update>
 
     <delete id="removeItripUserById" parameterType="Long">
-        remove from itrip_user where id = ${ id}
+        delete from itrip_user where id = ${ id}
     </delete>
 </mapper>

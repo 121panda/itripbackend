@@ -113,7 +113,7 @@
     </select>
 
     <insert id="saveItripProductStore" parameterType="ItripProductStore">
-        save into itrip_product_store(
+        insert into itrip_product_store(
                 productType as productType, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
                 productId as productId, <!-- 商品id -->
                 store as store, <!-- 商品库存 -->
@@ -134,7 +134,7 @@
     </insert>
 
     <update id="modifyItripProductStore" parameterType="ItripProductStore">
-        modify itrip_product_store
+        update itrip_product_store
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -172,6 +172,6 @@
     </update>
 
     <delete id="removeItripProductStoreById" parameterType="Long">
-        remove from itrip_product_store where id = ${ id}
+        delete from itrip_product_store where id = ${ id}
     </delete>
 </mapper>

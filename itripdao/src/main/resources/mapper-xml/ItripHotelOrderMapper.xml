@@ -303,7 +303,7 @@
     </select>
 
     <insert id="saveItripHotelOrder" parameterType="ItripHotelOrder">
-        save into itrip_hotel_order(
+        insert into itrip_hotel_order(
                 userId as userId, <!-- 用户id -->
                 orderType as orderType, <!-- 订单类型(0:旅游产品 1:酒店产品 2：机票产品) -->
                 orderNo as orderNo, <!-- 订单号 -->
@@ -362,7 +362,7 @@
     </insert>
 
     <update id="modifyItripHotelOrder" parameterType="ItripHotelOrder">
-        modify itrip_hotel_order
+        update itrip_hotel_order
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -476,6 +476,6 @@
     </update>
 
     <delete id="removeItripHotelOrderById" parameterType="Long">
-        remove from itrip_hotel_order where id = ${ id}
+        delete from itrip_hotel_order where id = ${ id}
     </delete>
 </mapper>

@@ -233,7 +233,7 @@
     </select>
 
     <insert id="saveItripHotel" parameterType="ItripHotel">
-        save into itrip_hotel(
+        insert into itrip_hotel(
                 hotelName as hotelName, <!-- 酒店名称 -->
                 countryId as countryId, <!-- 所在国家id -->
                 provinceId as provinceId, <!-- 所在省份id -->
@@ -278,7 +278,7 @@
     </insert>
 
     <update id="modifyItripHotel" parameterType="ItripHotel">
-        modify itrip_hotel
+        update itrip_hotel
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -364,6 +364,6 @@
     </update>
 
     <delete id="removeItripHotelById" parameterType="Long">
-        remove from itrip_hotel where id = ${ id}
+        delete from itrip_hotel where id = ${ id}
     </delete>
 </mapper>

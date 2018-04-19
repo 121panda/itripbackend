@@ -223,7 +223,7 @@
     </select>
 
     <insert id="saveItripComment" parameterType="ItripComment">
-        save into itrip_comment(
+        insert into itrip_comment(
                 hotelId as hotelId, <!-- 如果产品是酒店的话 改字段保存酒店id -->
                 productId as productId, <!-- 商品id -->
                 orderId as orderId, <!-- 订单id -->
@@ -266,7 +266,7 @@
     </insert>
 
     <update id="modifyItripComment" parameterType="ItripComment">
-        modify itrip_comment
+        update itrip_comment
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -348,6 +348,6 @@
     </update>
 
     <delete id="removeItripCommentById" parameterType="Long">
-        remove from itrip_comment where id = ${ id}
+        delete from itrip_comment where id = ${ id}
     </delete>
 </mapper>

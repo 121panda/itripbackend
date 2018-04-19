@@ -103,7 +103,7 @@
     </select>
 
     <insert id="saveItripHotelExtendProperty" parameterType="ItripHotelExtendProperty">
-        save into itrip_hotel_extend_property(
+        insert into itrip_hotel_extend_property(
                 hotelId as hotelId, <!-- 酒店id -->
                 extendPropertyId as extendPropertyId, <!-- 推广属性 -->
                 creationDate as creationDate, <!--  -->
@@ -122,7 +122,7 @@
     </insert>
 
     <update id="modifyItripHotelExtendProperty" parameterType="ItripHotelExtendProperty">
-        modify itrip_hotel_extend_property
+        update itrip_hotel_extend_property
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
 
                 <if test="id != null and id!=''">
@@ -156,6 +156,6 @@
     </update>
 
     <delete id="removeItripHotelExtendPropertyById" parameterType="Long">
-        remove from itrip_hotel_extend_property where id = ${ id}
+        delete from itrip_hotel_extend_property where id = ${ id}
     </delete>
 </mapper>
