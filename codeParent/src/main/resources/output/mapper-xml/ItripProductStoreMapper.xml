@@ -40,7 +40,7 @@
                     </if>
 
                     <if test="productType != null and productType!='' or productType==0">
-                        and productType=#{column productType}
+                        and productType=#{ productType}
                     </if>
 
                     <if test="productId != null and productId!=''">
@@ -48,7 +48,7 @@
                     </if>
 
                     <if test="store != null and store!='' or store==0">
-                        and store=#{column store}
+                        and store=#{ store}
                     </if>
 
                     <if test="creationDate != null and creationDate!=''">
@@ -82,7 +82,7 @@
                 </if>
 
                 <if test="productType != null and productType!='' or productType==0">
-                    and productType=#{column productType}
+                    and productType=#{ productType}
                 </if>
 
                 <if test="productId != null and productId!=''">
@@ -90,7 +90,7 @@
                 </if>
 
                 <if test="store != null and store!='' or store==0">
-                    and store=#{column store}
+                    and store=#{ store}
                 </if>
 
                 <if test="creationDate != null and creationDate!=''">
@@ -114,63 +114,62 @@
 
     <insert id="saveItripProductStore" parameterType="ItripProductStore">
         insert into itrip_product_store(
-                productType as productType, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
-                productId as productId, <!-- 商品id -->
-                store as store, <!-- 商品库存 -->
-                creationDate as creationDate, <!--  -->
-                createdBy as createdBy, <!--  -->
-                modifyDate as modifyDate, <!--  -->
-                modifiedBy as modifiedBy  <!--  -->
+                    productType, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
+                    productId, <!-- 商品id -->
+                    store, <!-- 商品库存 -->
+                    creationDate, <!--  -->
+                    createdBy, <!--  -->
+                    modifyDate, <!--  -->
+                    modifiedBy  <!--  -->
         )
         values(
-                #{column productType}, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
-                #{column productId}, <!-- 商品id -->
-                #{column store}, <!-- 商品库存 -->
-                #{column creationDate}, <!--  -->
-                #{column createdBy}, <!--  -->
-                #{column modifyDate}, <!--  -->
-                #{column modifiedBy}  <!--  -->
+                #{ productType}, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
+                #{ productId}, <!-- 商品id -->
+                #{ store}, <!-- 商品库存 -->
+                #{ creationDate}, <!--  -->
+                #{ createdBy}, <!--  -->
+                #{ modifyDate}, <!--  -->
+                #{ modifiedBy}  <!--  -->
         )
     </insert>
 
     <update id="modifyItripProductStore" parameterType="ItripProductStore">
         update itrip_product_store
-        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
 
                 <if test="id != null and id!=''">
-                    and id=#{ id}
+                    id=#{ id},
                 </if>
 
                 <if test="productType != null and productType!='' or productType==0">
-                    and productType=#{column productType}
+                    productType=#{ productType},
                 </if>
 
                 <if test="productId != null and productId!=''">
-                    and productId=#{ productId}
+                    productId=#{ productId},
                 </if>
 
                 <if test="store != null and store!='' or store==0">
-                    and store=#{column store}
+                    store=#{ store},
                 </if>
 
                 <if test="creationDate != null and creationDate!=''">
-                    and creationDate=#{ creationDate}
+                    creationDate=#{ creationDate},
                 </if>
 
                 <if test="createdBy != null and createdBy!=''">
-                    and createdBy=#{ createdBy}
+                    createdBy=#{ createdBy},
                 </if>
 
                 <if test="modifyDate != null and modifyDate!=''">
-                    and modifyDate=#{ modifyDate}
+                    modifyDate=#{ modifyDate},
                 </if>
 
                 <if test="modifiedBy != null and modifiedBy!=''">
-                    and modifiedBy=#{ modifiedBy}
+                    modifiedBy=#{ modifiedBy},
                 </if>
         </trim>
     </update>
-
     <delete id="removeItripProductStoreById" parameterType="Long">
         delete from itrip_product_store where id = ${ id}
     </delete>

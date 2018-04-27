@@ -114,63 +114,62 @@
 
     <insert id="saveItripOrderLinkUser" parameterType="ItripOrderLinkUser">
         insert into itrip_order_link_user(
-                orderId as orderId, <!-- 订单id -->
-                linkUserId as linkUserId, <!-- 联系人id -->
-                linkUserName as linkUserName, <!-- 入住人姓名逗号分隔 -->
-                creationDate as creationDate, <!--  -->
-                createdBy as createdBy, <!--  -->
-                modifyDate as modifyDate, <!--  -->
-                modifiedBy as modifiedBy  <!--  -->
+                    orderId, <!-- 订单id -->
+                    linkUserId, <!-- 联系人id -->
+                    linkUserName, <!-- 入住人姓名逗号分隔 -->
+                    creationDate, <!--  -->
+                    createdBy, <!--  -->
+                    modifyDate, <!--  -->
+                    modifiedBy  <!--  -->
         )
         values(
-                #{column orderId}, <!-- 订单id -->
-                #{column linkUserId}, <!-- 联系人id -->
-                #{column linkUserName}, <!-- 入住人姓名逗号分隔 -->
-                #{column creationDate}, <!--  -->
-                #{column createdBy}, <!--  -->
-                #{column modifyDate}, <!--  -->
-                #{column modifiedBy}  <!--  -->
+                #{ orderId}, <!-- 订单id -->
+                #{ linkUserId}, <!-- 联系人id -->
+                #{ linkUserName}, <!-- 入住人姓名逗号分隔 -->
+                #{ creationDate}, <!--  -->
+                #{ createdBy}, <!--  -->
+                #{ modifyDate}, <!--  -->
+                #{ modifiedBy}  <!--  -->
         )
     </insert>
 
     <update id="modifyItripOrderLinkUser" parameterType="ItripOrderLinkUser">
         update itrip_order_link_user
-        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
 
                 <if test="id != null and id!=''">
-                    and id=#{ id}
+                    id=#{ id},
                 </if>
 
                 <if test="orderId != null and orderId!=''">
-                    and orderId=#{ orderId}
+                    orderId=#{ orderId},
                 </if>
 
                 <if test="linkUserId != null and linkUserId!=''">
-                    and linkUserId=#{ linkUserId}
+                    linkUserId=#{ linkUserId},
                 </if>
 
                 <if test="linkUserName != null and linkUserName!=''">
-                    and linkUserName=#{ linkUserName}
+                    linkUserName=#{ linkUserName},
                 </if>
 
                 <if test="creationDate != null and creationDate!=''">
-                    and creationDate=#{ creationDate}
+                    creationDate=#{ creationDate},
                 </if>
 
                 <if test="createdBy != null and createdBy!=''">
-                    and createdBy=#{ createdBy}
+                    createdBy=#{ createdBy},
                 </if>
 
                 <if test="modifyDate != null and modifyDate!=''">
-                    and modifyDate=#{ modifyDate}
+                    modifyDate=#{ modifyDate},
                 </if>
 
                 <if test="modifiedBy != null and modifiedBy!=''">
-                    and modifiedBy=#{ modifiedBy}
+                    modifiedBy=#{ modifiedBy},
                 </if>
         </trim>
     </update>
-
     <delete id="removeItripOrderLinkUserById" parameterType="Long">
         delete from itrip_order_link_user where id = ${ id}
     </delete>

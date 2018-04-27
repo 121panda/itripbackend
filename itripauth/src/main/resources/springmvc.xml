@@ -32,5 +32,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-
+    <!-- 处理静态文件（配置对静态文件的处理） -->
+    <mvc:default-servlet-handler/>
 </beans>

@@ -406,27 +406,46 @@
         </dependency>
         <!--SwaggerUI end-->
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.1.0</version>
-        </dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>2.1.0</version>
+    </dependency>
         <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4.7</version>
         </dependency>
+        <dependency>
+            <groupId>com.ytzl.itrip</groupId>
+            <artifactId>smssdk</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!-- solrj   start -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+        <!--solrj stop -->
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>releases</id><!--ID 需要与你的 release 仓库的 Repository ID 一致 -->
-            <url>http://192.168.245.131:8081/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id><!-- ID 需要与你的 snapshots 仓库的 Repository ID 一致 -->
-            <url>http://192.168.245.131:8081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>releases</id>&lt;!&ndash;ID 需要与你的 release 仓库的 Repository ID 一致 &ndash;&gt;-->
+            <!--<url>http://192.168.245.131:8081/nexus/content/repositories/releases</url>-->
+        <!--</repository>-->
+        <!--<snapshotRepository>-->
+            <!--<id>snapshots</id>&lt;!&ndash; ID 需要与你的 snapshots 仓库的 Repository ID 一致 &ndash;&gt;-->
+            <!--<url>http://192.168.245.131:8081/nexus/content/repositories/snapshots</url>-->
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
 
 </project>

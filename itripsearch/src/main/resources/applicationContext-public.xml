@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+">
+
+
+    <context:component-scan base-package="com.ytzl.itrip"/>
+    <context:property-placeholder location="classpath*:db.properties"/>
+
+    <!-- redis conf -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!-- 最大连接数 -->
+        <property name="maxActive" value="${redis.maxActive}"/>
+        <!-- 最大空闲数 -->
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <!-- 最长等待时间 -->
+        <property name="maxWait" value="${redis.maxWait}"/>
+        <!-- 检查连接 -->
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+    </bean>
+    <bean id="jedisPooldis" class="redis.clients.jedis.JedisPool">
+        <!-- jedis配置文件 -->
+        <constructor-arg ref="jedisPoolConfig"/>
+        <!-- ip地址 -->
+        <constructor-arg value="${redis.host}"/>
+        <!-- 端口 -->
+        <constructor-arg value="${redis.port}"/>
+        <!-- 连接超时时间 -->
+        <constructor-arg value="${redis.timeout}"/>
+        <!-- 密码 -->
+        <constructor-arg value="${redis.password}"/>
+    </bean>
+</beans>

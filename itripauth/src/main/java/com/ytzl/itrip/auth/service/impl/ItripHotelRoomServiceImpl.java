@@ -2,14 +2,14 @@ package com.ytzl.itrip.auth.service.impl;
 import com.ytzl.itrip.auth.service.ItripHotelRoomService;
 import com.ytzl.itrip.dao.mapper.ItripHotelRoomMapper;
 import com.ytzl.itrip.beans.model.ItripHotelRoom;
-import com.ytzl.itrip.utils.EmptyUtils;
-import com.ytzl.itrip.utils.Page;
+import com.ytzl.itrip.utils.common.EmptyUtils;
+import com.ytzl.itrip.utils.common.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import com.ytzl.itrip.utils.Constants;
+import com.ytzl.itrip.utils.common.Constants;
 @Service("itripHotelRoomService")
 public class ItripHotelRoomServiceImpl implements ItripHotelRoomService {
 

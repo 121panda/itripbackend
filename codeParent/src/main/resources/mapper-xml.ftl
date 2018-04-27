@@ -36,7 +36,7 @@
             <#list table.columnList as column>
                 <#if column.columnType=="Integer">
                     <if test="${column.columnName} != null and ${column.columnName}!='' or ${column.columnName}==0">
-                        and ${column.columnName}=${r"#{column"} ${column.columnName}}
+                        and ${column.columnName}=${r"#{"} ${column.columnName}}
                     </if>
                 <#else >
                     <if test="${column.columnName} != null and ${column.columnName}!=''">
@@ -58,7 +58,7 @@
         <#list table.columnList as column>
             <#if column.columnType=="Integer">
                 <if test="${column.columnName} != null and ${column.columnName}!='' or ${column.columnName}==0">
-                    and ${column.columnName}=${r"#{column"} ${column.columnName}}
+                    and ${column.columnName}=${r"#{"} ${column.columnName}}
                 </if>
             <#else >
                 <if test="${column.columnName} != null and ${column.columnName}!=''">
@@ -75,9 +75,9 @@
             <#list table.columnList as column>
             <#if column.columnName !="id">
                 <#if column_has_next>
-                ${column.columnName} as ${column.columnName}, <!-- ${column.columnRemark} -->
+                    ${column.columnName}, <!-- ${column.columnRemark} -->
                 <#else>
-                ${column.columnName} as ${column.columnName}  <!-- ${column.columnRemark} -->
+                    ${column.columnName}  <!-- ${column.columnRemark} -->
                 </#if>
             </#if>
             </#list>
@@ -86,9 +86,9 @@
          <#list table.columnList as column>
             <#if column.columnName!="id">
                 <#if column_has_next>
-                ${r"#{column"} ${column.columnName}}, <!-- ${column.columnRemark} -->
+                ${r"#{"} ${column.columnName}}, <!-- ${column.columnRemark} -->
                 <#else>
-                ${r"#{column"} ${column.columnName}}  <!-- ${column.columnRemark} -->
+                ${r"#{"} ${column.columnName}}  <!-- ${column.columnRemark} -->
                 </#if>
             </#if>
         </#list>
@@ -97,22 +97,21 @@
 
     <update id="modify${table.className}" parameterType="${table.className}">
         update ${table.tableName}
-        <trim prefix="set" suffixOverrides="," suffix="where id=${r"#{"}id}}">
+        <trim prefix="set" suffixOverrides="," suffix="where id=${r"#{"}id}">
         <#list table.columnList as column>
 
             <#if column.columnType=="Integer">
                 <if test="${column.columnName} != null and ${column.columnName}!='' or ${column.columnName}==0">
-                    and ${column.columnName}=${r"#{column"} ${column.columnName}}
+                    ${column.columnName}=${r"#{"} ${column.columnName}},
                 </if>
             <#else >
                 <if test="${column.columnName} != null and ${column.columnName}!=''">
-                    and ${column.columnName}=${r"#{"} ${column.columnName}}
+                    ${column.columnName}=${r"#{"} ${column.columnName}},
                 </if>
             </#if>
         </#list>
         </trim>
     </update>
-
     <delete id="remove${table.className}ById" parameterType="Long">
         delete from ${table.tableName} where id = ${r"${"} id}
     </delete>

@@ -1,14 +1,14 @@
-package ${packageName}.service.impl;
+package ${packageName}.auth.service.impl;
 import ${packageName}.dao.mapper.${table.className}Mapper;
 import ${packageName}.beans.model.${table.className};
-import ${packageName}.utils.EmptyUtils;
-import ${packageName}.utils.Page;
+import ${packageName}.utils.common.EmptyUtils;
+import ${packageName}.utils.common.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import ${packageName}.utils.Constants;
+import ${packageName}.utils.common.Constants;
 @Service("${table.firstLowerCaseClassName}Service")
 public class ${table.className}ServiceImpl implements ${table.className}Service {
 

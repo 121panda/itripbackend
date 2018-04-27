@@ -13,11 +13,10 @@ public class Test {
         List<Table> tableList = TableHandler.getTables();
         for (Table table: tableList
              ) {
-//            GeneratorHandler.execute(table);
-            GeneratorHandler.executeMapper(table);
-            GeneratorHandler.executeMapperXml(table);
-            GeneratorHandler.executeModel(table);
-            GeneratorHandler.executeService(table);
+//            GeneratorHandler.executeMapper(table);
+//            GeneratorHandler.executeMapperXml(table);
+//            GeneratorHandler.executeModel(table);
+//            GeneratorHandler.executeService(table);
             GeneratorHandler.executeServiceImpl(table);
         }
     }

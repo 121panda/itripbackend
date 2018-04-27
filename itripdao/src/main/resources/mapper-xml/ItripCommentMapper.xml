@@ -74,7 +74,7 @@
                     </if>
 
                     <if test="productType != null and productType!='' or productType==0">
-                        and productType=#{column productType}
+                        and productType=#{ productType}
                     </if>
 
                     <if test="content != null and content!=''">
@@ -86,27 +86,27 @@
                     </if>
 
                     <if test="isHavingImg != null and isHavingImg!='' or isHavingImg==0">
-                        and isHavingImg=#{column isHavingImg}
+                        and isHavingImg=#{ isHavingImg}
                     </if>
 
                     <if test="positionScore != null and positionScore!='' or positionScore==0">
-                        and positionScore=#{column positionScore}
+                        and positionScore=#{ positionScore}
                     </if>
 
                     <if test="facilitiesScore != null and facilitiesScore!='' or facilitiesScore==0">
-                        and facilitiesScore=#{column facilitiesScore}
+                        and facilitiesScore=#{ facilitiesScore}
                     </if>
 
                     <if test="serviceScore != null and serviceScore!='' or serviceScore==0">
-                        and serviceScore=#{column serviceScore}
+                        and serviceScore=#{ serviceScore}
                     </if>
 
                     <if test="hygieneScore != null and hygieneScore!='' or hygieneScore==0">
-                        and hygieneScore=#{column hygieneScore}
+                        and hygieneScore=#{ hygieneScore}
                     </if>
 
                     <if test="score != null and score!='' or score==0">
-                        and score=#{column score}
+                        and score=#{ score}
                     </if>
 
                     <if test="tripMode != null and tripMode!=''">
@@ -114,7 +114,7 @@
                     </if>
 
                     <if test="isOk != null and isOk!='' or isOk==0">
-                        and isOk=#{column isOk}
+                        and isOk=#{ isOk}
                     </if>
 
                     <if test="creationDate != null and creationDate!=''">
@@ -160,7 +160,7 @@
                 </if>
 
                 <if test="productType != null and productType!='' or productType==0">
-                    and productType=#{column productType}
+                    and productType=#{ productType}
                 </if>
 
                 <if test="content != null and content!=''">
@@ -172,27 +172,27 @@
                 </if>
 
                 <if test="isHavingImg != null and isHavingImg!='' or isHavingImg==0">
-                    and isHavingImg=#{column isHavingImg}
+                    and isHavingImg=#{ isHavingImg}
                 </if>
 
                 <if test="positionScore != null and positionScore!='' or positionScore==0">
-                    and positionScore=#{column positionScore}
+                    and positionScore=#{ positionScore}
                 </if>
 
                 <if test="facilitiesScore != null and facilitiesScore!='' or facilitiesScore==0">
-                    and facilitiesScore=#{column facilitiesScore}
+                    and facilitiesScore=#{ facilitiesScore}
                 </if>
 
                 <if test="serviceScore != null and serviceScore!='' or serviceScore==0">
-                    and serviceScore=#{column serviceScore}
+                    and serviceScore=#{ serviceScore}
                 </if>
 
                 <if test="hygieneScore != null and hygieneScore!='' or hygieneScore==0">
-                    and hygieneScore=#{column hygieneScore}
+                    and hygieneScore=#{ hygieneScore}
                 </if>
 
                 <if test="score != null and score!='' or score==0">
-                    and score=#{column score}
+                    and score=#{ score}
                 </if>
 
                 <if test="tripMode != null and tripMode!=''">
@@ -200,7 +200,7 @@
                 </if>
 
                 <if test="isOk != null and isOk!='' or isOk==0">
-                    and isOk=#{column isOk}
+                    and isOk=#{ isOk}
                 </if>
 
                 <if test="creationDate != null and creationDate!=''">
@@ -224,129 +224,128 @@
 
     <insert id="saveItripComment" parameterType="ItripComment">
         insert into itrip_comment(
-                hotelId as hotelId, <!-- 如果产品是酒店的话 改字段保存酒店id -->
-                productId as productId, <!-- 商品id -->
-                orderId as orderId, <!-- 订单id -->
-                productType as productType, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
-                content as content, <!-- 评论内容 -->
-                userId as userId, <!-- 用户编号 -->
-                isHavingImg as isHavingImg, <!-- 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片 -->
-                positionScore as positionScore, <!-- 位置评分 -->
-                facilitiesScore as facilitiesScore, <!-- 设施评分 -->
-                serviceScore as serviceScore, <!-- 服务评分 -->
-                hygieneScore as hygieneScore, <!-- 卫生评分 -->
-                score as score, <!-- 综合评分 -->
-                tripMode as tripMode, <!-- 出游类型 -->
-                isOk as isOk, <!-- 是否满意（0：有待改善 1：值得推荐） -->
-                creationDate as creationDate, <!--  -->
-                createdBy as createdBy, <!--  -->
-                modifyDate as modifyDate, <!--  -->
-                modifiedBy as modifiedBy  <!--  -->
+                    hotelId, <!-- 如果产品是酒店的话 改字段保存酒店id -->
+                    productId, <!-- 商品id -->
+                    orderId, <!-- 订单id -->
+                    productType, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
+                    content, <!-- 评论内容 -->
+                    userId, <!-- 用户编号 -->
+                    isHavingImg, <!-- 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片 -->
+                    positionScore, <!-- 位置评分 -->
+                    facilitiesScore, <!-- 设施评分 -->
+                    serviceScore, <!-- 服务评分 -->
+                    hygieneScore, <!-- 卫生评分 -->
+                    score, <!-- 综合评分 -->
+                    tripMode, <!-- 出游类型 -->
+                    isOk, <!-- 是否满意（0：有待改善 1：值得推荐） -->
+                    creationDate, <!--  -->
+                    createdBy, <!--  -->
+                    modifyDate, <!--  -->
+                    modifiedBy  <!--  -->
         )
         values(
-                #{column hotelId}, <!-- 如果产品是酒店的话 改字段保存酒店id -->
-                #{column productId}, <!-- 商品id -->
-                #{column orderId}, <!-- 订单id -->
-                #{column productType}, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
-                #{column content}, <!-- 评论内容 -->
-                #{column userId}, <!-- 用户编号 -->
-                #{column isHavingImg}, <!-- 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片 -->
-                #{column positionScore}, <!-- 位置评分 -->
-                #{column facilitiesScore}, <!-- 设施评分 -->
-                #{column serviceScore}, <!-- 服务评分 -->
-                #{column hygieneScore}, <!-- 卫生评分 -->
-                #{column score}, <!-- 综合评分 -->
-                #{column tripMode}, <!-- 出游类型 -->
-                #{column isOk}, <!-- 是否满意（0：有待改善 1：值得推荐） -->
-                #{column creationDate}, <!--  -->
-                #{column createdBy}, <!--  -->
-                #{column modifyDate}, <!--  -->
-                #{column modifiedBy}  <!--  -->
+                #{ hotelId}, <!-- 如果产品是酒店的话 改字段保存酒店id -->
+                #{ productId}, <!-- 商品id -->
+                #{ orderId}, <!-- 订单id -->
+                #{ productType}, <!-- 商品类型(0:旅游产品 1:酒店产品 2:机票产品) -->
+                #{ content}, <!-- 评论内容 -->
+                #{ userId}, <!-- 用户编号 -->
+                #{ isHavingImg}, <!-- 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片 -->
+                #{ positionScore}, <!-- 位置评分 -->
+                #{ facilitiesScore}, <!-- 设施评分 -->
+                #{ serviceScore}, <!-- 服务评分 -->
+                #{ hygieneScore}, <!-- 卫生评分 -->
+                #{ score}, <!-- 综合评分 -->
+                #{ tripMode}, <!-- 出游类型 -->
+                #{ isOk}, <!-- 是否满意（0：有待改善 1：值得推荐） -->
+                #{ creationDate}, <!--  -->
+                #{ createdBy}, <!--  -->
+                #{ modifyDate}, <!--  -->
+                #{ modifiedBy}  <!--  -->
         )
     </insert>
 
     <update id="modifyItripComment" parameterType="ItripComment">
         update itrip_comment
-        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
 
                 <if test="id != null and id!=''">
-                    and id=#{ id}
+                    id=#{ id},
                 </if>
 
                 <if test="hotelId != null and hotelId!=''">
-                    and hotelId=#{ hotelId}
+                    hotelId=#{ hotelId},
                 </if>
 
                 <if test="productId != null and productId!=''">
-                    and productId=#{ productId}
+                    productId=#{ productId},
                 </if>
 
                 <if test="orderId != null and orderId!=''">
-                    and orderId=#{ orderId}
+                    orderId=#{ orderId},
                 </if>
 
                 <if test="productType != null and productType!='' or productType==0">
-                    and productType=#{column productType}
+                    productType=#{ productType},
                 </if>
 
                 <if test="content != null and content!=''">
-                    and content=#{ content}
+                    content=#{ content},
                 </if>
 
                 <if test="userId != null and userId!=''">
-                    and userId=#{ userId}
+                    userId=#{ userId},
                 </if>
 
                 <if test="isHavingImg != null and isHavingImg!='' or isHavingImg==0">
-                    and isHavingImg=#{column isHavingImg}
+                    isHavingImg=#{ isHavingImg},
                 </if>
 
                 <if test="positionScore != null and positionScore!='' or positionScore==0">
-                    and positionScore=#{column positionScore}
+                    positionScore=#{ positionScore},
                 </if>
 
                 <if test="facilitiesScore != null and facilitiesScore!='' or facilitiesScore==0">
-                    and facilitiesScore=#{column facilitiesScore}
+                    facilitiesScore=#{ facilitiesScore},
                 </if>
 
                 <if test="serviceScore != null and serviceScore!='' or serviceScore==0">
-                    and serviceScore=#{column serviceScore}
+                    serviceScore=#{ serviceScore},
                 </if>
 
                 <if test="hygieneScore != null and hygieneScore!='' or hygieneScore==0">
-                    and hygieneScore=#{column hygieneScore}
+                    hygieneScore=#{ hygieneScore},
                 </if>
 
                 <if test="score != null and score!='' or score==0">
-                    and score=#{column score}
+                    score=#{ score},
                 </if>
 
                 <if test="tripMode != null and tripMode!=''">
-                    and tripMode=#{ tripMode}
+                    tripMode=#{ tripMode},
                 </if>
 
                 <if test="isOk != null and isOk!='' or isOk==0">
-                    and isOk=#{column isOk}
+                    isOk=#{ isOk},
                 </if>
 
                 <if test="creationDate != null and creationDate!=''">
-                    and creationDate=#{ creationDate}
+                    creationDate=#{ creationDate},
                 </if>
 
                 <if test="createdBy != null and createdBy!=''">
-                    and createdBy=#{ createdBy}
+                    createdBy=#{ createdBy},
                 </if>
 
                 <if test="modifyDate != null and modifyDate!=''">
-                    and modifyDate=#{ modifyDate}
+                    modifyDate=#{ modifyDate},
                 </if>
 
                 <if test="modifiedBy != null and modifiedBy!=''">
-                    and modifiedBy=#{ modifiedBy}
+                    modifiedBy=#{ modifiedBy},
                 </if>
         </trim>
     </update>
-
     <delete id="removeItripCommentById" parameterType="Long">
         delete from itrip_comment where id = ${ id}
     </delete>

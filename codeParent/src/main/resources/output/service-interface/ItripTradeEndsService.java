@@ -1,9 +1,9 @@
-package com.ytzl.itrip.service;
+package com.ytzl.itrip.auth.service;
 import com.ytzl.itrip.beans.model.ItripTradeEnds;
 import java.util.List;
 import java.util.Map;
 
-import com.ytzl.itrip.utils.Page;
+import com.ytzl.itrip.utils.common.Page;
 /**
 * Created by shang-pc on 2015/11/7.
 */

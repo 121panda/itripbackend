@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 初始化邮箱消息 -->
+    <bean id="simpleMailMessage" class="org.springframework.mail.SimpleMailMessage">
+        <!--  -->
+        <property name="subject" value="[爱旅行]新用户确认通知新"></property>
+        <!-- 发送人 -->
+        <property name="from" value="littlpanda@aliyun.com"></property>
+    </bean>
+    <!-- 协议 -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="protocol" value="smtp"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="host" value="smtp.aliyun.com"/>
+        <property name="port" value="465"/>
+        <property name="username" value="littlpanda@aliyun.com"/>
+        <property name="password" value="123456cxj"/>
+        <property name="javaMailProperties">
+            <!-- 配置smtp服务器需要用户验证 -->
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.soketFactory.port">465</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

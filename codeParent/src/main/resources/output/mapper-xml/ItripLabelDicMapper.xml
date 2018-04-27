@@ -134,75 +134,74 @@
 
     <insert id="saveItripLabelDic" parameterType="ItripLabelDic">
         insert into itrip_label_dic(
-                name as name, <!-- key值 -->
-                value as value, <!-- value值 -->
-                description as description, <!-- 描述 -->
-                parentId as parentId, <!-- 父级标签id(1级标签则为0) -->
-                pic as pic, <!-- 标签图片地址 -->
-                creationDate as creationDate, <!--  -->
-                createdBy as createdBy, <!--  -->
-                modifyDate as modifyDate, <!--  -->
-                modifiedBy as modifiedBy  <!--  -->
+                    name, <!-- key值 -->
+                    value, <!-- value值 -->
+                    description, <!-- 描述 -->
+                    parentId, <!-- 父级标签id(1级标签则为0) -->
+                    pic, <!-- 标签图片地址 -->
+                    creationDate, <!--  -->
+                    createdBy, <!--  -->
+                    modifyDate, <!--  -->
+                    modifiedBy  <!--  -->
         )
         values(
-                #{column name}, <!-- key值 -->
-                #{column value}, <!-- value值 -->
-                #{column description}, <!-- 描述 -->
-                #{column parentId}, <!-- 父级标签id(1级标签则为0) -->
-                #{column pic}, <!-- 标签图片地址 -->
-                #{column creationDate}, <!--  -->
-                #{column createdBy}, <!--  -->
-                #{column modifyDate}, <!--  -->
-                #{column modifiedBy}  <!--  -->
+                #{ name}, <!-- key值 -->
+                #{ value}, <!-- value值 -->
+                #{ description}, <!-- 描述 -->
+                #{ parentId}, <!-- 父级标签id(1级标签则为0) -->
+                #{ pic}, <!-- 标签图片地址 -->
+                #{ creationDate}, <!--  -->
+                #{ createdBy}, <!--  -->
+                #{ modifyDate}, <!--  -->
+                #{ modifiedBy}  <!--  -->
         )
     </insert>
 
     <update id="modifyItripLabelDic" parameterType="ItripLabelDic">
         update itrip_label_dic
-        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}}">
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
 
                 <if test="id != null and id!=''">
-                    and id=#{ id}
+                    id=#{ id},
                 </if>
 
                 <if test="name != null and name!=''">
-                    and name=#{ name}
+                    name=#{ name},
                 </if>
 
                 <if test="value != null and value!=''">
-                    and value=#{ value}
+                    value=#{ value},
                 </if>
 
                 <if test="description != null and description!=''">
-                    and description=#{ description}
+                    description=#{ description},
                 </if>
 
                 <if test="parentId != null and parentId!=''">
-                    and parentId=#{ parentId}
+                    parentId=#{ parentId},
                 </if>
 
                 <if test="pic != null and pic!=''">
-                    and pic=#{ pic}
+                    pic=#{ pic},
                 </if>
 
                 <if test="creationDate != null and creationDate!=''">
-                    and creationDate=#{ creationDate}
+                    creationDate=#{ creationDate},
                 </if>
 
                 <if test="createdBy != null and createdBy!=''">
-                    and createdBy=#{ createdBy}
+                    createdBy=#{ createdBy},
                 </if>
 
                 <if test="modifyDate != null and modifyDate!=''">
-                    and modifyDate=#{ modifyDate}
+                    modifyDate=#{ modifyDate},
                 </if>
 
                 <if test="modifiedBy != null and modifiedBy!=''">
-                    and modifiedBy=#{ modifiedBy}
+                    modifiedBy=#{ modifiedBy},
                 </if>
         </trim>
     </update>
-
     <delete id="removeItripLabelDicById" parameterType="Long">
         delete from itrip_label_dic where id = ${ id}
     </delete>

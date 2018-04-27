@@ -1,9 +1,9 @@
-package ${packageName}.service;
+package ${packageName}.auth.service;
 import ${packageName}.beans.model.${table.className};
 import java.util.List;
 import java.util.Map;
 
-import ${packageName}.utils.Page;
+import ${packageName}.utils.common.Page;
 /**
 * Created by shang-pc on 2015/11/7.
 */
